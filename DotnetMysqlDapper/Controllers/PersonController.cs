@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DotnetMysqlDapper.Controllers;
 
 [Route("api/people")]
+[ApiController]
 public class PersonController : ControllerBase
 {
     private readonly IPersonRepository _personRepo;
@@ -22,7 +23,7 @@ public class PersonController : ControllerBase
         try
         {
             var people = await _personRepo.GetPeopleAsync();
-            return Ok();
+            return Ok(people);
         }
         catch (Exception ex)
         {
